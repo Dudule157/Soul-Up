@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <header class="topbar">
+            <div>
+                <h1>Soul Up</h1>
+                <p>Analise de agachamento por upload de video</p>
+            </div>
+            <label class="api-field">
+                API
+                <input id="apiBaseUrl" type="url" value="http://localhost:8080">
+            </label>
+        </header>
+
+        <section class="workspace">
+            <section class="panel">
+                <h2>Usuario</h2>
+                <form id="userForm" class="form-grid">
+                    <label>
+                        Nome
+                        <input id="nome" name="nome" type="text" required maxlength="120">
+                    </label>
+                    <label>
+                        Email
+                        <input id="email" name="email" type="email" required maxlength="160">
+                    </label>
+                    <label>
+                        Senha
+                        <input id="senha" name="senha" type="password" required minlength="6" maxlength="120">
+                    </label>
+                    <button type="submit">Criar usuario</button>
+                </form>
+
+                <label class="stacked-field">
+                    Usuario ativo
+                    <select id="usuarioSelect"></select>
+                </label>
+            </section>
+
+            <section class="panel">
+                <h2>Analisar treino</h2>
+                <form id="analysisForm" class="form-grid">
+                    <label class="file-field">
+                        Video
+                        <input id="video" name="video" type="file" accept=".mp4,.mov,.avi,video/mp4,video/quicktime,video/x-msvideo" required>
+                    </label>
+                    <button id="analyzeButton" type="submit">Enviar e analisar</button>
+                </form>
+
+                <div id="statusMessage" class="status" aria-live="polite"></div>
+
+                <div id="resultPanel" class="result-panel hidden">
+                    <div>
+                        <span>Exercicio</span>
+                        <strong id="resultExercise">-</strong>
+                    </div>
+                    <div>
+                        <span>Repeticoes</span>
+                        <strong id="resultRepetitions">-</strong>
+                    </div>
+                    <div>
+                        <span>Duracao</span>
+                        <strong id="resultDuration">-</strong>
+                    </div>
+                    <div class="result-feedback">
+                        <span>Feedback</span>
+                        <strong id="resultFeedback">-</strong>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section class="panel history-panel">
+            <div class="history-header">
+                <h2>Historico</h2>
+                <button id="refreshHistoryButton" type="button">Atualizar</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Usuario</th>
+                            <th>Exercicio</th>
+                            <th>Repeticoes</th>
+                            <th>Duracao</th>
+                            <th>Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyTable"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

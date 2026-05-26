@@ -1,0 +1,14 @@
+.idea/
+.vscode/
+
+backend/target/
+backend/uploads/
+
+ia-python/.venv/
+ia-python/__pycache__/
+ia-python/*.pyc
+ia-python/uploads/*
+!ia-python/uploads/.gitkeep
+
+*.log
+.env
